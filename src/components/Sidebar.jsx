@@ -4,8 +4,14 @@ import { useState, useCallback } from "react"
  * unordered list.
  * @returns Component
  */
+
+// Sidebar functional component that takes in initialMenuItems as prop
 export default function Sidebar({ initialMenuItems }) {
+
+  // state variable newMenuItem created with setter function setNewMenuItem
+  // set to "" to hold inputted values
   let [newMenuItem, setNewMenuItem] = useState("")
+
   // TODO: 2 Using a state hook, maintain the current menu items as an array state.
   let [menuItems, setMenuItems] = useState(initialMenuItems)
   let [filter, setFilter] = useState("")
@@ -30,6 +36,7 @@ export default function Sidebar({ initialMenuItems }) {
   // its own item.
   return (
     <div>
+      {/* add new menu items input */}
       <input
         type="text"
         id="newMenuItemValue"
@@ -40,12 +47,13 @@ export default function Sidebar({ initialMenuItems }) {
       <button
         onClick={() => {
           /* TODO: 3 */
-          addMenuItem;
+          addMenuItem();
         }}
       >
         Add Item
       </button>
       <br />
+      {/*Filter inputs*/}
       <input
         id="filter"
         type="text"
@@ -54,7 +62,7 @@ export default function Sidebar({ initialMenuItems }) {
         placeholder="Filter by..."
       ></input>
       <br />
-
+      {/* Render filtered menu items */}
       <ul>
         {filteredMenuItems.map((item, index) => (
           <li key={index}>{item}</li>
